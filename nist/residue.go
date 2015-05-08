@@ -249,6 +249,13 @@ func (g *ResidueGroup) SetParams(P, Q, R, G *big.Int) {
 	}
 }
 
+func (g *ResidueGroup) NewPoint(val int64) abstract.Point {
+	p := new(residuePoint)
+	p.Int.SetInt64(val)
+	p.g = g
+	return p
+}
+
 // Initialize Residue group parameters for a quadratic residue group,
 // by picking primes P and Q such that P=2Q+1
 // and the smallest valid generator G for this group.
